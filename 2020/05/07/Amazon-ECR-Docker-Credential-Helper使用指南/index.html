@@ -20,22 +20,19 @@
     var CONFIG = {"hostname":"facccge.github.io","root":"/","scheme":"Mist","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
   </script>
 
-  <meta name="description" content="前言这次的照片依然是手机拍的，拍摄的对象是重庆东水门大桥。 原片 拍摄日期2019年4月16日，荣耀10专业模式，照片格式为DNG。【背景故事】这是在重庆旅游的时候住的民宿拍的，在阳台刚好能拍到东水门大桥，江景还是挺棒的。【取景】拍摄的主体就是东水门大桥和江景。【曝光】曝光交给手机来控制。【虚实】这种照片肯定就是全实了。【构图】三分法构图。【后期】曝光度右移，高光和黑色左移，白色和阴影右移。纹理和">
+  <meta name="description" content="简介Amazon ECR Docker Credential Helper是为了让我们更方便的使用Amazon Elastic Container Registry, 最主要的就是省去每次登录都要用一长串命令的麻烦。 传说中的一长串命令： $ &lt;aws_authenticate&gt; aws --region ap-southeast-2 ecr get-login-password |">
 <meta property="og:type" content="article">
-<meta property="og:title" content="每周一片-66-东水门大桥">
-<meta property="og:url" content="https://facccge.github.io/2020/04/11/%E6%AF%8F%E5%91%A8%E4%B8%80%E7%89%87-66-%E4%B8%9C%E6%B0%B4%E9%97%A8%E5%A4%A7%E6%A1%A5/index.html">
+<meta property="og:title" content="Amazon ECR Docker Credential Helper使用指南">
+<meta property="og:url" content="https://facccge.github.io/2020/05/07/Amazon-ECR-Docker-Credential-Helper%E4%BD%BF%E7%94%A8%E6%8C%87%E5%8D%97/index.html">
 <meta property="og:site_name" content="菲可志一">
-<meta property="og:description" content="前言这次的照片依然是手机拍的，拍摄的对象是重庆东水门大桥。 原片 拍摄日期2019年4月16日，荣耀10专业模式，照片格式为DNG。【背景故事】这是在重庆旅游的时候住的民宿拍的，在阳台刚好能拍到东水门大桥，江景还是挺棒的。【取景】拍摄的主体就是东水门大桥和江景。【曝光】曝光交给手机来控制。【虚实】这种照片肯定就是全实了。【构图】三分法构图。【后期】曝光度右移，高光和黑色左移，白色和阴影右移。纹理和">
+<meta property="og:description" content="简介Amazon ECR Docker Credential Helper是为了让我们更方便的使用Amazon Elastic Container Registry, 最主要的就是省去每次登录都要用一长串命令的麻烦。 传说中的一长串命令： $ &lt;aws_authenticate&gt; aws --region ap-southeast-2 ecr get-login-password |">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="https://raw.githubusercontent.com/facccge/facccge-images/master/photos/IMG_20190416_190818.dng-s-2560.jpg">
-<meta property="og:image" content="https://raw.githubusercontent.com/facccge/facccge-images/master/photos/IMG_20190416_190818.dng-f-2560.jpg">
-<meta property="article:published_time" content="2020-04-11T13:30:52.000Z">
-<meta property="article:modified_time" content="2020-05-03T13:59:46.222Z">
+<meta property="article:published_time" content="2020-05-06T16:03:24.000Z">
+<meta property="article:modified_time" content="2020-05-06T16:25:59.024Z">
 <meta property="article:author" content="Facccge">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://raw.githubusercontent.com/facccge/facccge-images/master/photos/IMG_20190416_190818.dng-s-2560.jpg">
 
-<link rel="canonical" href="https://facccge.github.io/2020/04/11/%E6%AF%8F%E5%91%A8%E4%B8%80%E7%89%87-66-%E4%B8%9C%E6%B0%B4%E9%97%A8%E5%A4%A7%E6%A1%A5/">
+<link rel="canonical" href="https://facccge.github.io/2020/05/07/Amazon-ECR-Docker-Credential-Helper%E4%BD%BF%E7%94%A8%E6%8C%87%E5%8D%97/">
 
 
 <script id="page-configurations">
@@ -48,7 +45,7 @@
   };
 </script>
 
-  <title>每周一片-66-东水门大桥 | 菲可志一</title>
+  <title>Amazon ECR Docker Credential Helper使用指南 | 菲可志一</title>
   
 
 
@@ -163,7 +160,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://facccge.github.io/2020/04/11/%E6%AF%8F%E5%91%A8%E4%B8%80%E7%89%87-66-%E4%B8%9C%E6%B0%B4%E9%97%A8%E5%A4%A7%E6%A1%A5/">
+    <link itemprop="mainEntityOfPage" href="https://facccge.github.io/2020/05/07/Amazon-ECR-Docker-Credential-Helper%E4%BD%BF%E7%94%A8%E6%8C%87%E5%8D%97/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.gif">
@@ -176,7 +173,7 @@
     </span>
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
-          每周一片-66-东水门大桥
+          Amazon ECR Docker Credential Helper使用指南
         </h1>
 
         <div class="post-meta">
@@ -185,16 +182,10 @@
                 <i class="far fa-calendar"></i>
               </span>
               <span class="post-meta-item-text">发表于</span>
+              
 
-              <time title="创建时间：2020-04-11 21:30:52" itemprop="dateCreated datePublished" datetime="2020-04-11T21:30:52+08:00">2020-04-11</time>
+              <time title="创建时间：2020-05-07 00:03:24 / 修改时间：00:25:59" itemprop="dateCreated datePublished" datetime="2020-05-07T00:03:24+08:00">2020-05-07</time>
             </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2020-05-03 21:59:46" itemprop="dateModified" datetime="2020-05-03T21:59:46+08:00">2020-05-03</time>
-              </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
                 <i class="far fa-folder"></i>
@@ -205,7 +196,7 @@
                 </span>
                   ，
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E7%BC%96%E7%A8%8B%E7%94%9F%E6%B4%BB/%E6%AF%8F%E5%91%A8%E4%B8%80%E7%89%87/" itemprop="url" rel="index"><span itemprop="name">每周一片</span></a>
+                  <a href="/categories/%E7%BC%96%E7%A8%8B%E7%94%9F%E6%B4%BB/%E5%B0%8F%E9%97%AE%E9%A2%98/" itemprop="url" rel="index"><span itemprop="name">小问题</span></a>
                 </span>
             </span>
 
@@ -220,10 +211,26 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>这次的照片依然是手机拍的，拍摄的对象是重庆东水门大桥。</p>
-<h2 id="原片"><a href="#原片" class="headerlink" title="原片"></a>原片</h2><p><img src="https://raw.githubusercontent.com/facccge/facccge-images/master/photos/IMG_20190416_190818.dng-s-2560.jpg" alt="原片"></p>
-<p>拍摄日期2019年4月16日，荣耀10专业模式，照片格式为DNG。<br>【背景故事】<br>这是在重庆旅游的时候住的民宿拍的，在阳台刚好能拍到东水门大桥，江景还是挺棒的。<br>【取景】<br>拍摄的主体就是东水门大桥和江景。<br>【曝光】<br>曝光交给手机来控制。<br>【虚实】<br>这种照片肯定就是全实了。<br>【构图】<br>三分法构图。<br>【后期】<br>曝光度右移，高光和黑色左移，白色和阴影右移。<br>纹理和清晰度右移。<br>大幅度降低饱和度。<br>对比度右移。<br>在分离色调中为高光和阴影增加青色212左右。<br>在原色调整中，蓝原色色相左移。<br>在HSL调整中，红色色相右移，黄色色相左移，绿色色相右移；青色蓝色饱和度左移，红色黄色橙色饱和度右移，青色蓝色亮度左移，红色黄色橙色亮度右移。</p>
-<h2 id="成片"><a href="#成片" class="headerlink" title="成片"></a>成片</h2><p><img src="https://raw.githubusercontent.com/facccge/facccge-images/master/photos/IMG_20190416_190818.dng-f-2560.jpg" alt="成片"></p>
+        <h2 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h2><p>Amazon ECR Docker Credential Helper是为了让我们更方便的使用Amazon Elastic Container Registry, 最主要的就是省去每次登录都要用一长串命令的麻烦。</p>
+<p>传说中的一长串命令：</p>
+<p><code>$ &lt;aws_authenticate&gt; aws --region ap-southeast-2 ecr get-login-password | docker login --username AWS --password-stdin https://&lt;aws_account_id&gt;.dkr.ecr.&lt;region&gt;.amazonaws.com</code></p>
+<h2 id="使用方法，以Mac系统为例"><a href="#使用方法，以Mac系统为例" class="headerlink" title="使用方法，以Mac系统为例"></a>使用方法，以Mac系统为例</h2><ul>
+<li>1.使用brew安装<code>docker-credential-helper-ecr</code></li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ brew install docker-credential-helper-ecr</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>2.修改docker的配置文件<code>~/.docker/config.json</code></li>
+</ul>
+<p>修改前大概这样</p>
+<figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  <span class="attr">"auths"</span>: &#123;</span><br><span class="line">    <span class="attr">"https://index.docker.io/v1/"</span>: &#123;&#125;,</span><br><span class="line">  &#125;,</span><br><span class="line">  <span class="attr">"HttpHeaders"</span>: &#123;</span><br><span class="line">    <span class="attr">"User-Agent"</span>: <span class="string">"Docker-Client/19.03.5 (darwin)"</span></span><br><span class="line">  &#125;,</span><br><span class="line">  <span class="attr">"credsStore"</span>: <span class="string">"desktop"</span>,</span><br><span class="line">  <span class="attr">"stackOrchestrator"</span>: <span class="string">"swarm"</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>修改后大概这样</p>
+<figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  <span class="attr">"auths"</span>: &#123;</span><br><span class="line">    <span class="attr">"https://index.docker.io/v1/"</span>: &#123;&#125;,</span><br><span class="line">  &#125;,</span><br><span class="line">  <span class="attr">"HttpHeaders"</span>: &#123;</span><br><span class="line">    <span class="attr">"User-Agent"</span>: <span class="string">"Docker-Client/19.03.5 (darwin)"</span></span><br><span class="line">  &#125;,</span><br><span class="line">  <span class="attr">"credsStore"</span>: <span class="string">"desktop"</span>,</span><br><span class="line">  <span class="attr">"credHelpers"</span>: &#123;</span><br><span class="line">    <span class="attr">"&lt;aws_account_id&gt;.dkr.ecr.&lt;region&gt;.amazonaws.com"</span>: <span class="string">"ecr-login"</span>,</span><br><span class="line">    <span class="attr">"https://&lt;aws_account_id&gt;.dkr.ecr.&lt;region&gt;.amazonaws.com"</span>: <span class="string">"ecr-login"</span></span><br><span class="line">  &#125;,</span><br><span class="line">  <span class="attr">"stackOrchestrator"</span>: <span class="string">"swarm"</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>主要就是增加一个<code>credHelpers</code>去帮助我们登录指定的ECR registry， <code>&lt;aws_account_id&gt;.dkr.ecr.&lt;region&gt;.amazonaws.com</code>就是我们要登录的ECR registry的URI，<code>&lt;aws_account_id&gt;</code>和<code>&lt;region&gt;</code>需要根据实际情况进行替换。有一点需要注意的是只有Docker 1.13.0及以上才能使用<code>credHelpers</code>,否则只能通过将<code>&quot;credsStore&quot;: &quot;desktop&quot;</code>替换为<code>&quot;credsStore&quot;: &quot;ecr-login&quot;</code>来达到同样的效果。建议还是使用<code>credHelpers</code>的方式，这样不会影响到其他registry的登录。</p>
+<h2 id="大功告成"><a href="#大功告成" class="headerlink" title="大功告成"></a>大功告成</h2><p>这样设置好以后，每次登录<code>ECR registry</code>的时候，只需要先authenticate到aws，然后直接<code>docker pull</code>就可以拉镜像了，是不是很方便！</p>
+<h2 id="Reference"><a href="#Reference" class="headerlink" title="Reference"></a>Reference</h2><p><a href="https://github.com/awslabs/amazon-ecr-credential-helper#Configuration" target="_blank" rel="noopener">github for amazon-ecr-credential-helper</a></p>
 
     </div>
 
@@ -239,13 +246,10 @@
         
     <div class="post-nav">
       <div class="post-nav-item">
-    <a href="/2020/03/29/%E6%AF%8F%E5%91%A8%E4%B8%80%E7%89%87-65-%E6%A1%A5/" rel="prev" title="【每周一片】65：桥">
-      <i class="fa fa-chevron-left"></i> 【每周一片】65：桥
+    <a href="/2020/04/11/%E6%AF%8F%E5%91%A8%E4%B8%80%E7%89%87-67-%E5%96%B5/" rel="prev" title="每周一片-67-喵">
+      <i class="fa fa-chevron-left"></i> 每周一片-67-喵
     </a></div>
-      <div class="post-nav-item">
-    <a href="/2020/04/11/%E6%AF%8F%E5%91%A8%E4%B8%80%E7%89%87-67-%E5%96%B5/" rel="next" title="每周一片-67-喵">
-      每周一片-67-喵 <i class="fa fa-chevron-right"></i>
-    </a></div>
+      <div class="post-nav-item"></div>
     </div>
       </footer>
     
@@ -304,7 +308,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#前言"><span class="nav-number">1.</span> <span class="nav-text">前言</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#原片"><span class="nav-number">2.</span> <span class="nav-text">原片</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#成片"><span class="nav-number">3.</span> <span class="nav-text">成片</span></a></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#简介"><span class="nav-number">1.</span> <span class="nav-text">简介</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#使用方法，以Mac系统为例"><span class="nav-number">2.</span> <span class="nav-text">使用方法，以Mac系统为例</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#大功告成"><span class="nav-number">3.</span> <span class="nav-text">大功告成</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Reference"><span class="nav-number">4.</span> <span class="nav-text">Reference</span></a></li></ol></div>
       </div>
       <!--/noindex-->
 
